@@ -1,6 +1,6 @@
 const express=require('express');
 const app=new express();
-const port=process.env.port || 8000;
+const port=process.env.PORT || 8000;
 
 const nav=[                             // create nav bar menu as global object array
     {
