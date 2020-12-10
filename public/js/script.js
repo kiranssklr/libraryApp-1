@@ -1,3 +1,15 @@
+function loginvalidate(){
+    var username=document.getElementById('uname').value;
+    var password=document.getElementById('pwd').value;
+    if(username.trim()==''||password.trim()==''){
+        alert('Username or Password cannot be empty');
+        return false;
+    }
+    else{
+        alert('Thank you for logged in');;
+        return true;
+    }
+}
 
 function signupSubmit(){
     var alertLabel=document.getElementsByClassName('alertLabel');
