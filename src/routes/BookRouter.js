@@ -1,35 +1,97 @@
 const express=require('express');
 const BookRouter=express.Router();
+const BookData=require('../model/bookdata');
+const multer=require('multer');
+// const path=require('path');
+const fs=require('fs');
+const { Buffer } = require('buffer');
+const { title } = require('process');
 
 function route(nav){    
-    var Books=[
-        {
-            title:'Wings of Fire',
-            author:'APJ Abdul Kalam',
-            genre:'Autobiography',
-            imag:'apj.jpg'
-        },
-        {
-            title:'A Walk to Remember',
-            author:'Nicholas Sparks',
-            genre:'Drama',
-            imag:'walk.jpg'
-        },
-        {
-            title:'Othello',
-            author:'William Shakespeare',
-            genre:'Drama',
-            imag:'othello.jpg'
-        }
-    ];
+    // var Books=[
+    //     {
+    //         title:'Wings of Fire',
+    //         author:'APJ Abdul Kalam',
+    //         genre:'Autobiography',
+    //         imag:'apj.jpg'
+    //     },
+    //     {
+    //         title:'A Walk to Remember',
+    //         author:'Nicholas Sparks',
+    //         genre:'Drama',
+    //         imag:'walk.jpg'
+    //     },
+    //     {
+    //         title:'Othello',
+    //         author:'William Shakespeare',
+    //         genre:'Drama',
+    //         imag:'othello.jpg'
+    //     }
+    // ];
 
     BookRouter.get('/',function(req,resp){
-        resp.render('books',{
-            nav,
-            title:'Books',
-            page:'addbook',
-            Books
-        });
+        BookData.find()
+        .then(function(Books){
+            resp.render('books',{
+                nav,
+                title:'Books',
+                page:'addbook',
+                Books
+            });
+        })
+        
+    });
+
+    BookRouter.get('/addbook/add',function(req,resp){
+        var bookItem={
+            title: req.query.title,
+            author: req.query.author,
+            genre: req.query.genre,
+            image: req.query.image
+        }
+        var book=BookData(bookItem);
+        book.save();
+        resp.redirect('/books/addbook');
+    });
+
+    BookRouter.get('/delete/:id',function(req,resp){
+        BookData.deleteOne({_id:req.params.id})
+        .then(()=>{
+            resp.redirect('/books');
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    });
+    var bookId;
+    BookRouter.get('/updatebook/:id',function(req,resp){
+        bookId=req.params.id;
+        BookData.findOne({_id:bookId})
+        .then(function(Book){
+            resp.render('updatebook',{
+                nav,
+                title:'Update Book',
+                page:'updatebook',
+                Book
+            })
+        })
+    });
+    
+    BookRouter.get('/updatebook',function(req,resp){   
+        var bookItem={
+            title: req.query.title,
+            author: req.query.author,
+            genre: req.query.genre,
+            image: req.query.image
+        }
+        bookItem={$set:bookItem}
+        BookData.updateOne({_id:bookId},bookItem)
+        .then(()=>{
+            resp.redirect('/books');
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
     });
 
     BookRouter.get('/addbook',function(req,resp){
@@ -38,16 +100,20 @@ function route(nav){
             title:'Add Book',
             page:'addbook'
         });
-    });
+    });  
 
     BookRouter.get('/:id',function(req,resp){
         const id=req.params.id;
-        resp.render('book',{
-            nav,
-            title:'Book',
-            page:'addbook',
-            Book:Books[id]
-        });
+        BookData.findOne({_id:id})
+        .then(function(Book){
+            resp.render('book',{
+                nav,
+                title:'Book',
+                page:'addbook',
+                Book
+            });
+        })
+        
     });
     return BookRouter;
 }
