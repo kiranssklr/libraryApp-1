@@ -6,10 +6,11 @@ function loginvalidate(){
         return false;
     }
     else{
-        alert('Thank you for logged in');;
+        // alert('Thank you for logged in');;
         return true;
     }
 }
+
 
 function signupSubmit(){
     var alertLabel=document.getElementsByClassName('alertLabel');
