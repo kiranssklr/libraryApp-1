@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-mongoose.connect('mongodb://localhost:27017/library',{useNewUrlParser:true,useNewUnifiedTopology:true});
+mongoose.connect('mongodb+srv://user:pwd@321@ssquaresolution.zx7de.mongodb.net/libraryapp?retryWrites=true&w=majority',{useNewUrlParser:true,useNewUnifiedTopology:true});
 const Schema=mongoose.Schema;
 
 const SignUpSchema=new Schema({
