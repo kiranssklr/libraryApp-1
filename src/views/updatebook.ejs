@@ -53,7 +53,6 @@
     </div> 
   </div><!-- /cont -->
   
-  
 </div>
 
 
@@ -70,16 +69,16 @@
           <!--/stories-->
           <div class="mainSignIn">
             <div class="innerLogin"><br><br>
-              <p class="sign" align="center">Add New Author Here</p>
-              <form class="form1" action="/authors/addauthor/add" method="GET">
-                <input class="un " id='authorInput' type="text" align="center" name='author' placeholder="Author Name"><br>
-                <label class='alertLabel' for="" id='unLabel'></label><br><br>
-                <input class="un " id='countryInput' type="text" align="center" name='country' placeholder="Country"><br>
-                <label class='alertLabel' for="" id='emailLabel'></label><br><br>
-                <input class="un " id='categoryInput' type="text" align="center" name='category' placeholder="Writer Category"><br>
-                <label class='alertLabel' for="" id='phoneLabel'></label><br><br>
-                <input id='fileInput' class='un' type="file" align='center' name='image'><br>
-                <button class="submit" align="center">Add Author</button><br>
+              <p class="sign" align="center">Update Book Here</p>
+              <form class="form1" action="/books/updatebook" method="GET" enctype="multipart/form-data">
+                <input class="un " id='bookInput' type="text" name='title' align="center" placeholder="Book Title" value="<%=Book.title%>"><br>
+                <label class='alertLabel' for="" id='bookLabel'></label><br><br>
+                <input class="un " id='authorlInput' type="text" name='author' align="center" placeholder="Author" value="<%=Book.author%>"><br>
+                <label class='alertLabel' for="" id='authorlLabel'></label><br><br>
+                <input class="un " id='genreInput' type="text" name='genre' align="center" placeholder="Genre of Book" value="<%=Book.genre%>"><br>
+                <label class='alertLabel' for="" id='genreLabel'></label><br><br>
+                <input id='fileInput' class='un' type="file" name='image' align='center'><br>
+                <button class="submit" align="center">Update Book</button><br>
               </form>  <br>  
             </div>                 
           </div> 

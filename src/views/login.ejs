@@ -71,9 +71,11 @@
           <div class="mainSignIn">
             <div class="innerLogin"><br><br>
               <p class="sign" align="center">Log in Here</p>
-              <form class="form1" onsubmit="return loginvalidate()" action="#">
-                <input id='uname' class="un " type="text" align="center" placeholder="Username"><br><br>
-                <input id='pwd' class="pass" type="password" align="center" placeholder="Password"><br><br>
+              <form class="form1" onsubmit="return loginvalidate()" action="/login" method="POST">
+                <input id='uname' class="un " type="text" align="center" placeholder="Username" name='username'><br>
+                <label for="" name='warning'></label>
+                <br>
+                <input id='pwd' class="pass" type="password" align="center" placeholder="Password" name="password"><br><br>
                 <button class="submit" align="center">Sign in</button><br>
               </form>  <br>  
             </div><p><a href="signup">New Member</a>
@@ -138,5 +140,6 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
+
 	</body>
 </html>

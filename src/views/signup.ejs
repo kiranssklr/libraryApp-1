@@ -71,16 +71,16 @@
           <div class="mainSignIn">
             <div class="innerLogin"><br><br>
               <p class="sign" align="center">Register Here</p>
-              <form class="form1" onsubmit="return signupSubmit()" action="#">
-                <input class="un " id='unInput' type="text" align="center" placeholder="Username"><br>
+              <form class="form1" onsubmit="return signupSubmit()" action="/signup/add" method="POST">
+                <input class="un " id='unInput' type="text" align="center" name="user" placeholder="Username"><br>
                 <label class='alertLabel' for="" id='unLabel'></label><br><br>
-                <input class="un " id='emailInput' type="text" align="center" placeholder="Email Id"><br>
+                <input class="un " id='emailInput' type="text" align="center" name='email' placeholder="Email Id"><br>
                 <label class='alertLabel' for="" id='emailLabel'></label><br><br>
-                <input class="un " id='phoneInput' type="text" align="center" placeholder="Phone Number"><br>
+                <input class="un " id='phoneInput' type="text" align="center" name='phone' placeholder="Phone Number"><br>
                 <label class='alertLabel' for="" id='phoneLabel'></label><br><br>
-                <input class="pass" id='pwdInput' type="password" align="center" placeholder="Password" onkeyup="return pwdstrengthchecker()"><br>
+                <input class="pass" id='pwdInput' type="password" align="center" name='password' placeholder="Password" onkeyup="return pwdstrengthchecker()"><br>
                 <label class='alertLabel' for="" id='pwdLabel'></label><br><br>
-                <input class="pass" id='cpwdInput' type="password" align="center" placeholder="Confirm Password"><br>
+                <input class="pass" id='cpwdInput' type="password" align="center" name='conpassword' placeholder="Confirm Password"><br>
                 <label class='alertLabel' for="" id='cpwdLabel'></label><br><br>
                 <button class="submit" align="center">Register</button><br>
               </form>  <br>  
